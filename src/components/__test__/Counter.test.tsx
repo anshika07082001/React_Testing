@@ -19,12 +19,13 @@ test("decrement button is clicked and value decrements by 1",()=>{
     render(<Counter/>);
     let decrement = screen.getByTestId("counter");
     userEvent.click(screen.getByRole('button',{name:'-'}));
-    expect(decrement).toHaveTextContent("0");
+    expect(decrement).toHaveTextContent("1");
 });
 
-// test('decrement should not less than 0',()=>{
-//     render(<Counter/>);
-//     let dec = screen.getByTestId('counter');
-//     userEvent.click(screen.getByRole('button',{name:'-'}));
-//     expect(dec).toHaveTextContent('0')
-// })
+test('decrement should not less than 0',()=>{
+    render(<Counter/>);
+    let dec = screen.getByTestId('counter');
+    expect(dec).toHaveTextContent('1')
+    userEvent.click(screen.getByRole('button',{name:'-'}));
+    expect(dec).toHaveTextContent('1')
+})
